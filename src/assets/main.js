@@ -1,18 +1,18 @@
 $(function() {
   $.ajax({
     url: 'https://www.codeschool.com/users/rgordon95.json',
-    dateType: 'jsonp',
+    dataType: 'jsonp',
     success: function(response) {
-      //convert json to js
-      //create html to hold response
-      createElement('DIV')
-      .addClass('.course')
-      .appendTo('#badges')
-      //insert data from json or js object into html
-      //append html to page
-    }
-  });
+      //for each course completed returned by the response
+      for (let i = 0; i < response.courses.completed.length; i++) {
+        //create a div, add class .course, append to #badges
+        let div = document.createElement('DIV');
+          div.toggleClass('.course');
+          div.appendTo('#badges');
+      } //end for loop
+    } // end success function
+  }); //end ajax call
 
-});
+}); //end doc ready function
 
 // https://www.codeschool.com/users/rgordon95.json
